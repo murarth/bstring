@@ -13,3 +13,5 @@ script:
     - cargo test  --verbose
     - ( cd bstring_macros && cargo build --verbose )
     - ( cd bstring_macros && cargo test  --verbose )
+    - ( cd bstring_macros_hack && cargo build --verbose )
+    - ( cd bstring_macros_hack && cargo test  --verbose )
