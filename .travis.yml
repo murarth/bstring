@@ -1,0 +1,15 @@
+language: rust
+
+sudo: false
+
+notifications:
+    email: false
+
+branches:
+    only: master
+
+script:
+    - cargo build --verbose
+    - cargo test  --verbose
+    - ( cd bstring_macros && cargo build --verbose )
+    - ( cd bstring_macros && cargo test  --verbose )

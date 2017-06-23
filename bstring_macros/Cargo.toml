@@ -1,0 +1,18 @@
+[package]
+name = "bstring_macros"
+version = "0.1.0"
+authors = ["Murarth <murarth@gmail.com>"]
+
+description = "formatting macros for bstring crate"
+
+documentation = "https://docs.rs/bstring_macros/"
+homepage = "https://github.com/murarth/bstring"
+repository = "https://github.com/murarth/bstring"
+
+keywords = ["byte", "string", "format"]
+license = "MIT/Apache-2.0"
+
+[dependencies]
+bstring = "0.1"
+bstring_macros_hack = "0.1"
+proc-macro-hack = "0.3"

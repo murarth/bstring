@@ -1,0 +1,22 @@
+[package]
+name = "bstring_macros_hack"
+version = "0.1.0"
+authors = ["Murarth <murarth@gmail.com>"]
+
+description = "proc macro hack to implement bstring_macros"
+
+documentation = "https://docs.rs/bstring_macros_hack/"
+homepage = "https://github.com/murarth/bstring"
+repository = "https://github.com/murarth/bstring"
+
+keywords = []
+license = "MIT/Apache-2.0"
+
+[lib]
+proc-macro = true
+
+[dependencies]
+bstring = "0.1"
+proc-macro-hack = "0.3"
+quote = "0.3"
+syn = "0.11"

@@ -1,0 +1,20 @@
+[package]
+name = "bstring"
+version = "0.1.0"
+authors = ["Murarth <murarth@gmail.com>"]
+
+description = "Byte string formatting and manipulation"
+
+documentation = "https://docs.rs/bstring/"
+homepage = "https://github.com/murarth/bstring"
+repository = "https://github.com/murarth/bstring"
+
+keywords = ["byte", "string", "format"]
+license = "MIT/Apache-2.0"
+readme = "README.md"
+
+[dependencies]
+ref_slice = "1.1"
+
+[dev-dependencies]
+assert_matches = "1.1"
