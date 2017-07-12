@@ -21,6 +21,7 @@ extern crate ref_slice;
 
 pub use bstring::{bstr, BString};
 pub use from_bstr::FromBStr;
+pub use bfmt::ToBString;
 
 pub mod bfmt;
 pub mod bstring;
