@@ -805,6 +805,11 @@ impl bstr {
     /// This differs from `split` in that multiple occurances of a pattern
     /// will be considered as one.
     ///
+    /// # Notes
+    ///
+    /// Unlike the other split methods, calling `split_words` on an empty
+    /// string will result in an iterator yielding zero elements.
+    ///
     /// # Examples
     ///
     /// ```
@@ -2219,6 +2224,18 @@ mod test {
         assert_eq!(iter.next(), Some(bs("foo")));
         assert_eq!(iter.next(), Some(bs("bar")));
         assert_eq!(iter.next(), Some(bs("baz")));
+        assert_eq!(iter.next(), None);
+    }
+
+    #[test]
+    fn test_split_empty() {
+        let mut iter = bs("").split(b' ');
+
+        assert_eq!(iter.next(), Some("".as_ref()));
+        assert_eq!(iter.next(), None);
+
+        let mut iter = bs("").split_words(b' ');
+
         assert_eq!(iter.next(), None);
     }
 
