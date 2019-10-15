@@ -465,6 +465,40 @@ impl bstr {
         &mut self.bytes
     }
 
+    /// Checks that two strings are an ASCII case-insensitive match.
+    #[inline]
+    pub fn eq_ignore_ascii_case(&self, other: &bstr) -> bool {
+        self.as_bytes().eq_ignore_ascii_case(other.as_bytes())
+    }
+
+    /// Returns a copy of this string in ASCII lowercase.
+    #[inline]
+    pub fn to_ascii_lowercase(&self) -> BString {
+        let mut owned = self.to_owned();
+        owned.make_ascii_lowercase();
+        owned
+    }
+
+    /// Returns a copy of this string in ASCII uppercase.
+    #[inline]
+    pub fn to_ascii_uppercase(&self) -> BString {
+        let mut owned = self.to_owned();
+        owned.make_ascii_uppercase();
+        owned
+    }
+
+    /// Converts this string to ASCII lowercase in-place.
+    #[inline]
+    pub fn make_ascii_lowercase(&mut self) {
+        self.as_bytes_mut().make_ascii_lowercase();
+    }
+
+    /// Converts this string to ASCII uppercase in-place.
+    #[inline]
+    pub fn make_ascii_uppercase(&mut self) {
+        self.as_bytes_mut().make_ascii_uppercase();
+    }
+
     /// Returns a raw pointer to the contained buffer.
     #[inline]
     pub fn as_ptr(&self) -> *const u8 {
