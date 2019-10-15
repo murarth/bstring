@@ -461,7 +461,7 @@ impl bstr {
 
     /// Returns a mutable reference to the internal byte slice.
     #[inline]
-    pub fn as_mut_bytes(&mut self) -> &mut [u8] {
+    pub fn as_bytes_mut(&mut self) -> &mut [u8] {
         &mut self.bytes
     }
 
