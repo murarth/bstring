@@ -471,12 +471,32 @@ impl bstr {
         self.as_bytes().eq_ignore_ascii_case(other.as_bytes())
     }
 
+    /// Returns whether the string consists only of ASCII characters.
+    #[inline]
+    pub fn is_ascii(&self) -> bool {
+        self.iter().all(|&b| b.is_ascii())
+    }
+
+    /// Returns `true` if the string consists only of ASCII characters and
+    /// no characters are ASCII uppercase.
+    #[inline]
+    pub fn is_ascii_lowercase(&self) -> bool {
+        self.iter().all(|&b| b.is_ascii() && !b.is_ascii_uppercase())
+    }
+
     /// Returns a copy of this string in ASCII lowercase.
     #[inline]
     pub fn to_ascii_lowercase(&self) -> BString {
         let mut owned = self.to_owned();
         owned.make_ascii_lowercase();
         owned
+    }
+
+    /// Returns `true` if the string consists only of ASCII characters and
+    /// no characters are ASCII lowercase.
+    #[inline]
+    pub fn is_ascii_uppercase(&self) -> bool {
+        self.iter().all(|&b| b.is_ascii() && !b.is_ascii_lowercase())
     }
 
     /// Returns a copy of this string in ASCII uppercase.
@@ -2140,6 +2160,14 @@ mod test {
 
     fn bs<S: ?Sized + AsRef<bstr>>(s: &S) -> &bstr {
         s.as_ref()
+    }
+
+    #[test]
+    fn test_bstring_ascii() {
+        assert!(bs("foo").is_ascii());
+        assert!(bs("foo").is_ascii_lowercase());
+        assert!(bs("foo0\0").is_ascii_lowercase());
+        assert!(bs("FOO0\0").is_ascii_uppercase());
     }
 
     #[test]
